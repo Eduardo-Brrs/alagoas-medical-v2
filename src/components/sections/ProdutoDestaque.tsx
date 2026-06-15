@@ -14,41 +14,30 @@ export default function ProdutoDestaque() {
         <div className="mt-8 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Imagem */}
           <div className="relative flex min-h-[320px] items-center justify-center rounded-xl border border-border bg-card p-10">
-            <span className="absolute left-4 top-4 rounded-sm bg-brand-red px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white">
+            <span className="absolute left-4 top-4 z-10 rounded-sm bg-brand-red px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white">
               {p.badge}
             </span>
-            {p.imagemPlaceholder ? (
-              <div className="flex flex-col items-center gap-3 text-muted">
-                <PillIcon />
-                <span className="text-xs">Imagem em breve</span>
-              </div>
-            ) : (
-              <Image
-                src={p.imagem}
-                alt={`${p.nome} — ${p.marca}`}
-                width={360}
-                height={360}
-                className="max-h-72 w-auto object-contain"
-              />
-            )}
+            <Image
+              src={p.imagem}
+              alt={`${p.nome} — ${p.marca}`}
+              width={360}
+              height={360}
+              className="max-h-72 w-auto object-contain"
+            />
           </div>
 
           {/* Conteúdo */}
           <div>
             <div className="mb-4 flex items-center gap-2">
-              {p.logoMarcaPlaceholder ? (
-                <span className="rounded bg-brand-blue-light px-2.5 py-1 text-[11px] font-medium text-brand-blue">
-                  {p.marca}
-                </span>
-              ) : (
+              <span className="inline-flex items-center rounded-md bg-white px-3 py-1.5 ring-1 ring-border">
                 <Image
                   src={p.logoMarca}
                   alt={p.marca}
-                  width={80}
-                  height={24}
+                  width={120}
+                  height={33}
                   className="h-6 w-auto object-contain"
                 />
-              )}
+              </span>
             </div>
 
             <h2 className="text-4xl font-medium tracking-tight text-brand-blue dark:text-foreground">
@@ -98,24 +87,6 @@ function CheckIcon() {
       aria-hidden="true"
     >
       <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
-function PillIcon() {
-  return (
-    <svg
-      width="56"
-      height="56"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      className="opacity-30"
-      aria-hidden="true"
-    >
-      <path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7Z" />
-      <path d="m8.5 8.5 7 7" />
     </svg>
   );
 }

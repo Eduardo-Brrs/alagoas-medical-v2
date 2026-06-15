@@ -53,7 +53,6 @@ export const PARCEIROS: Parceiro[] = [
     descricao: "Curativos enzimáticos especializados",
     logo: "/images/flenhealth-logo.png",
     site: LINKS.flenHealth,
-    placeholder: true,
   },
 ];
 
@@ -74,9 +73,6 @@ export const PRODUTO_DESTAQUE = {
   imagem: "/images/flaminal-produto.png",
   logoMarca: "/images/flenhealth-logo.png",
   linkWhatsapp: LINKS.whatsappVendas,
-  // Enquanto cliente não envia os arquivos: usa fallback visual
-  imagemPlaceholder: true,
-  logoMarcaPlaceholder: true,
 } as const;
 
 export type Depoimento = {
