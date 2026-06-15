@@ -9,12 +9,12 @@ export default function Sobre() {
         <SectionLabel>Sobre</SectionLabel>
 
         <div className="mt-6 max-w-3xl">
-          <h2 className="text-[28px] font-medium tracking-tight text-brand-blue dark:text-foreground">
+          <h2 className="text-[1.75rem] font-medium tracking-tight text-brand-blue dark:text-foreground">
             {SOBRE.titulo}
           </h2>
           <p className="mt-1.5 text-sm text-muted">{SOBRE.subtitulo}</p>
 
-          <p className="mt-5 text-sm leading-relaxed text-foreground/80">
+          <p className="mt-5 text-base leading-relaxed text-foreground/80">
             {SOBRE.texto}
           </p>
 
@@ -22,7 +22,7 @@ export default function Sobre() {
             {SOBRE.checklist.map((item) => (
               <li
                 key={item}
-                className="flex items-center gap-2.5 text-[13px] text-foreground/80"
+                className="flex items-center gap-2.5 text-[0.8125rem] text-foreground/80"
               >
                 <CheckIcon />
                 {item}
@@ -40,13 +40,13 @@ export default function Sobre() {
               className="h-14 w-14 flex-shrink-0 rounded-full object-cover"
             />
             <div>
-              <p className="text-[10px] font-medium uppercase tracking-[0.08em] text-brand-red">
+              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand-red">
                 {SOBRE.fundadora.cargo}
               </p>
-              <p className="mt-0.5 text-[15px] font-medium text-brand-blue dark:text-foreground">
+              <p className="mt-0.5 text-[0.9375rem] font-medium text-brand-blue dark:text-foreground">
                 {SOBRE.fundadora.nome}
               </p>
-              <p className="mt-1 text-xs leading-relaxed text-muted">
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">
                 {SOBRE.fundadora.bio}
               </p>
             </div>

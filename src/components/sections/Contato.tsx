@@ -22,7 +22,7 @@ export default function Contato() {
             <h3 className="mt-3.5 text-base font-medium text-white">
               Vendas e produtos
             </h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-white/50">
+            <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-white/50">
               Dúvidas sobre produtos, pedidos ou suporte comercial.
             </p>
             <div className="mt-5">
@@ -39,7 +39,7 @@ export default function Contato() {
             <h3 className="mt-3.5 text-base font-medium text-white">
               Curativos e Home Care
             </h3>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-white/50">
+            <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-white/50">
               Orientações técnicas e atendimentos domiciliares com nossas
               especialistas.
             </p>

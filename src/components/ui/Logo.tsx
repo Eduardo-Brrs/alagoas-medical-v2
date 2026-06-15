@@ -24,7 +24,7 @@ export default function Logo({
           className="h-2 w-2 flex-shrink-0 rounded-full bg-brand-red"
           aria-hidden="true"
         />
-        <span className="text-[15px] font-medium text-white">
+        <span className="text-[0.9375rem] font-medium text-white">
           {EMPRESA.nome}
         </span>
       </Link>
@@ -42,10 +42,10 @@ export default function Logo({
         aria-hidden="true"
       />
       <span className="flex flex-col leading-tight">
-        <span className="text-[15px] font-medium tracking-tight text-brand-blue dark:text-white">
+        <span className="text-[0.9375rem] font-medium tracking-tight text-brand-blue dark:text-white">
           {EMPRESA.nome}
         </span>
-        <span className="text-[10px] font-normal text-muted">
+        <span className="text-[0.6875rem] font-normal text-muted">
           {EMPRESA.slogan}
         </span>
       </span>

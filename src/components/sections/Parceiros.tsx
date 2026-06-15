@@ -56,7 +56,7 @@ function ParceiroCard({ parceiro }: { parceiro: Parceiro }) {
       </h3>
       <p className="mt-1 text-xs text-muted">{parceiro.descricao}</p>
 
-      <span className="mt-4 inline-flex items-center gap-1 text-[11px] font-medium text-brand-red opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <span className="mt-4 inline-flex items-center gap-1 text-[0.6875rem] font-medium text-brand-red opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         Conhecer
         <svg
           width="12"

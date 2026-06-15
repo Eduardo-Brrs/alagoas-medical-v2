@@ -22,7 +22,7 @@ export default function SectionHeader({
       <SectionLabel>{label}</SectionLabel>
       {title && (
         <h2
-          className={`mt-2 text-[28px] font-medium tracking-tight ${
+          className={`mt-2 text-[1.75rem] font-medium tracking-tight ${
             onDark ? "text-white" : "text-brand-blue dark:text-foreground"
           }`}
         >

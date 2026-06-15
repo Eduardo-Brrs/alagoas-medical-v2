@@ -49,7 +49,7 @@ function ProdutoCard({ produto }: { produto: Produto }) {
       {/* Imagem */}
       <div className="relative flex h-56 items-center justify-center bg-white p-6">
         {produto.badge && (
-          <span className="absolute left-3 top-3 z-10 rounded-sm bg-brand-red px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white">
+          <span className="absolute left-3 top-3 z-10 rounded-sm bg-brand-red px-2.5 py-1 text-[0.6875rem] font-medium uppercase tracking-wider text-white">
             {produto.badge}
           </span>
         )}
