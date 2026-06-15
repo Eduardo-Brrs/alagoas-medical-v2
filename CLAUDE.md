@@ -3,6 +3,45 @@
 Briefing completo para reconstrução do site institucional da Alagoas Medical.
 Leia este arquivo inteiro antes de qualquer ação.
 
+> O restante deste arquivo é o **briefing original** (spec de intenção). A seção
+> abaixo registra o **estado real da implementação** e tem precedência onde divergir.
+
+---
+
+## ⏱️ Estado atual de execução (atualizado em 2026-06-15)
+
+**Paramos no fim do Bloco 5.** Site completo de ponta a ponta (todas as seções
+montadas e buildando com `output: export`). Falta o **Bloco 6** (SEO + GA + revisão final).
+
+### Stack real (difere do briefing)
+- **Next 16 + React 19 + Tailwind CSS v4** (o briefing assumia Tailwind v3).
+- **Sem `tailwind.config.ts`**: paleta definida como tokens `@theme` em `src/app/globals.css`.
+  - Cores de marca (fixas): `brand-blue`, `brand-blue-mid`, `brand-blue-footer`, `brand-blue-light`, `brand-red`, `brand-red-hover`.
+  - Cores semânticas (trocam no dark via `.dark`): `background`, `card`, `surface`, `foreground`, `muted`, `border`. Dark mode = classe (`next-themes`, `@custom-variant dark`).
+- **Headers de segurança em `vercel.json`** (NÃO em `next.config.ts` — `headers()` é ignorado em `output: export`). `next.config.ts` = `output: 'export'` + `images.unoptimized`.
+- **Fontes em `rem`** (passe de acessibilidade WCAG 1.4.4); piso de micro-texto = 11px.
+
+### Decisões de conteúdo/design (cliente + mockup)
+- **`mockup-referencia.html`** na raiz é a referência visual (não vai pro deploy; export só serve `public/` + app).
+- **Navbar:** Parceiros · Produtos (`#produto`) · Sobre · Avaliações (sem "Início").
+- **Hero stats:** `7+ anos` · `Home Care / & linha hospitalar` · `100% suporte` (o "3 marcas" foi removido a pedido do cliente).
+- **Parceiros:** logos grandes em chip branco + hover animado (estilo `featured-block` do v1). Logo da Flen é PNG paleta com **fundo branco** → sempre precisa de chip claro atrás.
+- **Produtos em Destaque:** refatorado de produto único → **grade de cards** via `PRODUTOS[]` em `constants.ts`. Só o **Flaminal** é real; os outros 2 são placeholders "Em breve". Descrição/indicações do Flaminal ainda são **placeholder** (aguardando cliente).
+- **Sobre:** foto do evento (`alagoas-medical-foto.jpeg`) **removida** (era com pessoal da Urgo, marca que saiu). Seção é coluna única agora; card da fundadora (Cleocina) mantido.
+- **Contato:** card de Home Care usa **dois botões** (Cleocina + Mariana) em vez do dropdown.
+- **`FloatingWidgets`** coordena o botão flutuante do WhatsApp + o `CookieBanner`: enquanto o banner está aberto, o float fica oculto (evita sobreposição no "Aceitar").
+
+### Pendências (Bloco 6)
+- `app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx` (sem `runtime='edge'` — incompatível com export).
+- **Google Analytics** + **ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas o site não seta cookies/GA — ativar GA só após "Aceitar"). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com` no `script-src`/`connect-src` do CSP em `vercel.json`.
+- Revisão final: Lighthouse (>90), acessibilidade, dark mode, mobile.
+- **Domínio real não confirmado** — `alagoasmedical.com.br` é placeholder em `metadata`/sitemap/robots.
+- Assets aguardando cliente: copy/indicações do Flaminal, demais produtos, e (ideal) logo da Flen em SVG/PNG transparente.
+
+### Segurança (revisão feita em 2026-06-15)
+Site estático, sem back-end → SQL injection, CSRF, auth e vazamento de env **não se aplicam**.
+Verificado: todo `target="_blank"` tem `rel="noopener noreferrer"`; sem `dangerouslySetInnerHTML`/`eval`/`http://`; React escapa o conteúdo. Headers + CSP em `vercel.json`. `npm audit` não rodou (erro de certificado/proxy local — reexecutar fora desse ambiente).
+
 ---
 
 ## Contexto do projeto
