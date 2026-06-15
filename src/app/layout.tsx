@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import FloatingWidgets from "@/components/layout/FloatingWidgets";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
             Pular para o conteúdo
           </a>
           {children}
+          <FloatingWidgets />
         </ThemeProvider>
       </body>
     </html>
