@@ -56,24 +56,46 @@ export const PARCEIROS: Parceiro[] = [
   },
 ];
 
+export type Produto = {
+  nome: string;
+  marca?: string;
+  logoMarca?: string;
+  badge?: string;
+  descricao: string;
+  imagem?: string;
+  linkWhatsapp: string;
+  /** true enquanto produto/asset/copy ainda não foi definido pelo cliente */
+  placeholder?: boolean;
+};
+
 /**
- * Produto em destaque — componente intercambiável.
- * Para trocar o produto destacado no futuro, basta editar este objeto.
+ * Produtos em destaque — seção em grade, intercambiável.
+ * Para adicionar/trocar produtos no futuro, basta editar este array.
+ * Hoje só o Flaminal é real; os demais são placeholders "Em breve".
  */
-export const PRODUTO_DESTAQUE = {
-  nome: "Flaminal",
-  marca: "Flen Health",
-  badge: "Em destaque",
-  descricao: "PLACEHOLDER — aguardando texto do cliente.",
-  indicacoes: [
-    "PLACEHOLDER indicação 1",
-    "PLACEHOLDER indicação 2",
-    "PLACEHOLDER indicação 3",
-  ],
-  imagem: "/images/flaminal-produto.png",
-  logoMarca: "/images/flenhealth-logo.png",
-  linkWhatsapp: LINKS.whatsappVendas,
-} as const;
+export const PRODUTOS: Produto[] = [
+  {
+    nome: "Flaminal",
+    marca: "Flen Health",
+    logoMarca: "/images/flenhealth-logo.png",
+    badge: "Em destaque",
+    descricao: "PLACEHOLDER — aguardando descrição do cliente.",
+    imagem: "/images/flaminal-produto.png",
+    linkWhatsapp: LINKS.whatsappVendas,
+  },
+  {
+    nome: "Em breve",
+    descricao: "Novo produto em destaque — em breve.",
+    linkWhatsapp: LINKS.whatsappVendas,
+    placeholder: true,
+  },
+  {
+    nome: "Em breve",
+    descricao: "Novo produto em destaque — em breve.",
+    linkWhatsapp: LINKS.whatsappVendas,
+    placeholder: true,
+  },
+];
 
 export type Depoimento = {
   nome: string;
