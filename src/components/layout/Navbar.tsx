@@ -8,14 +8,6 @@ import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Trava o scroll do body quando o menu mobile está aberto
   useEffect(() => {
@@ -26,26 +18,20 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-40 border-b transition-colors ${
-        scrolled
-          ? "border-border bg-background/90 backdrop-blur"
-          : "border-transparent bg-background"
-      }`}
-    >
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <nav
         aria-label="Navegação principal"
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
+        className="mx-auto flex max-w-[1100px] items-center justify-between px-6 py-3.5"
       >
         <Logo />
 
         {/* Links desktop */}
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="text-[13px] text-muted transition-colors hover:text-brand-blue dark:hover:text-white"
               >
                 {link.label}
               </a>
@@ -54,15 +40,15 @@ export default function Navbar() {
         </ul>
 
         {/* Ações desktop */}
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <DarkModeToggle className="text-muted" />
-          <Button href="#contato" variant="primary">
+          <Button href="#contato" variant="primary" size="sm">
             Falar com vendas
           </Button>
         </div>
 
         {/* Ações mobile */}
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 md:hidden">
           <DarkModeToggle className="text-muted" />
           <button
             type="button"
@@ -81,9 +67,9 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="border-t border-border bg-background lg:hidden"
+          className="border-t border-border bg-background md:hidden"
         >
-          <ul className="flex flex-col px-4 py-2 sm:px-6">
+          <ul className="mx-auto flex max-w-[1100px] flex-col px-6 py-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a

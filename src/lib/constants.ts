@@ -31,29 +31,29 @@ export type Parceiro = {
   descricao: string;
   logo: string;
   site: string;
+  /** true enquanto o arquivo do logo ainda não foi enviado pelo cliente */
+  placeholder?: boolean;
 };
 
 export const PARCEIROS: Parceiro[] = [
   {
     nome: "Carilex Medical",
-    descricao:
-      "Soluções avançadas em terapia por pressão negativa e cuidado de feridas.",
+    descricao: "Colchões e superfícies terapêuticas",
     logo: "/images/carilex-logo.png",
     site: LINKS.carilex,
   },
   {
     nome: "Curatec",
-    descricao:
-      "Linha completa de curativos e produtos para o tratamento de feridas.",
+    descricao: "Curativos de alta complexidade",
     logo: "/images/curatec-logo.jpg",
     site: LINKS.curatec,
   },
   {
     nome: "Flen Health",
-    descricao:
-      "Tecnologia em cicatrização e cuidado de feridas complexas, fabricante do Flaminal.",
+    descricao: "Curativos enzimáticos especializados",
     logo: "/images/flenhealth-logo.png",
     site: LINKS.flenHealth,
+    placeholder: true,
   },
 ];
 
@@ -74,6 +74,9 @@ export const PRODUTO_DESTAQUE = {
   imagem: "/images/flaminal-produto.png",
   logoMarca: "/images/flenhealth-logo.png",
   linkWhatsapp: LINKS.whatsappVendas,
+  // Enquanto cliente não envia os arquivos: usa fallback visual
+  imagemPlaceholder: true,
+  logoMarcaPlaceholder: true,
 } as const;
 
 export type Depoimento = {
@@ -131,17 +134,16 @@ export const SOBRE = {
   },
 } as const;
 
-/** Estatísticas exibidas no hero. */
+/** Estatísticas exibidas no hero. `accent` é o sufixo destacado em vermelho. */
 export const HERO_STATS = [
-  { valor: "7+", label: "anos de experiência" },
-  { valor: "3", label: "marcas parceiras" },
-  { valor: "Sempre", label: "suporte técnico" },
+  { num: "7", accent: "+", label: "anos de experiência" },
+  { num: "Home Care", accent: "", label: "& linha hospitalar" },
+  { num: "100", accent: "%", label: "suporte técnico" },
 ] as const;
 
 export const NAV_LINKS = [
-  { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
   { href: "#parceiros", label: "Parceiros" },
-  { href: "#produtos", label: "Produtos" },
+  { href: "#produto", label: "Produtos" },
+  { href: "#sobre", label: "Sobre" },
   { href: "#avaliacoes", label: "Avaliações" },
 ] as const;

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alagoas Medical v2 — Mockup de Referência</title>
+<style>
+  /* =============================================
+     DESIGN TOKENS — usar esses valores exatos
+  ============================================= */
+  :root {
+    --azul-principal: #0d3c6e;
+    --azul-medio: #1a5fa0;
+    --azul-claro: #f0f5fb;
+    --azul-footer: #07243f;
+    --vermelho: #ee3135;
+    --vermelho-hover: #c9282c;
+    --branco: #ffffff;
+    --cinza-superficie: #f7f9fc;
+    --cinza-borda: #e8e8e8;
+    --cinza-texto: #555555;
+    --cinza-muted: #888888;
+    --verde-whatsapp: #25D366;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #fff;
+    color: var(--cinza-texto);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* Container */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* =============================================
+     NAVBAR
+  ============================================= */
+  .navbar {
+    background: #fff;
+    border-bottom: 1px solid var(--cinza-borda);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--vermelho);
+    flex-shrink: 0;
+  }
+  .nav-brand-text .name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--azul-principal);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .nav-brand-text .sub {
+    font-size: 10px;
+    color: var(--cinza-muted);
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--cinza-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--azul-principal); }
+  .nav-cta {
+    background: var(--vermelho);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--vermelho-hover); }
+
+  /* =============================================
+     HERO
+  ============================================= */
+  .hero {
+    background: var(--azul-principal);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-shape {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 35%;
+    background: var(--vermelho);
+    opacity: 0.07;
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .hero .container {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-content {
+    flex: 1;
+    padding: 72px 48px 72px 0;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--vermelho);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 38px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    max-width: 500px;
+  }
+  .hero-title em {
+    color: var(--vermelho);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-red {
+    background: var(--vermelho);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-red:hover { background: var(--vermelho-hover); }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.6);
+    color: #fff;
+  }
+  .hero-stats {
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding: 72px 0 72px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    min-width: 200px;
+  }
+  .stat-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-num span { color: var(--vermelho); }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* =============================================
+     SECTIONS — padrão
+  ============================================= */
+  .section { padding: 72px 0; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--vermelho);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--azul-principal);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: var(--cinza-muted);
+    margin-bottom: 40px;
+  }
+
+  /* =============================================
+     PARCEIROS
+  ============================================= */
+  .parceiros-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .parceiro-card {
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .parceiro-card:hover {
+    border-color: var(--azul-principal);
+    box-shadow: 0 4px 20px rgba(13,60,110,0.08);
+  }
+  .parceiro-icon {
+    width: 48px; height: 48px;
+    background: var(--azul-claro);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+  .parceiro-info .name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--azul-principal);
+    margin-bottom: 4px;
+  }
+  .parceiro-info .desc {
+    font-size: 12px;
+    color: var(--cinza-muted);
+    margin-bottom: 10px;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(238,49,53,0.08);
+    color: var(--vermelho);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  /* =============================================
+     PRODUTO EM DESTAQUE
+  ============================================= */
+  .produto { background: var(--cinza-superficie); }
+  .produto-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .produto-img-wrap {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-borda);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    position: relative;
+  }
+  .produto-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: var(--vermelho);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .produto-placeholder {
+    font-size: 80px;
+    opacity: 0.15;
+  }
+  .produto-content {}
+  .produto-marca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .produto-marca-logo {
+    background: var(--azul-claro);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--azul-principal);
+  }
+  .produto-title {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--azul-principal);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .produto-desc {
+    font-size: 14px;
+    color: var(--cinza-texto);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .produto-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .produto-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--cinza-texto);
+  }
+  .check-icon {
+    color: var(--vermelho);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* =============================================
+     SOBRE
+  ============================================= */
+  .sobre-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  .sobre-img {
+    border-radius: 8px;
+    background: var(--azul-claro);
+    height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 4px solid var(--vermelho);
+    font-size: 72px;
+    opacity: 0.3;
+  }
+  .sobre-text {
+    font-size: 14px;
+    color: var(--cinza-texto);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .sobre-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .sobre-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--cinza-texto);
+  }
+  .founder {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--cinza-borda);
+    margin-top: 8px;
+  }
+  .founder-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--azul-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.6);
+    font-size: 22px;
+  }
+  .founder-role {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--vermelho);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .founder-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--azul-principal);
+    margin-bottom: 4px;
+  }
+  .founder-bio {
+    font-size: 12px;
+    color: var(--cinza-muted);
+    line-height: 1.6;
+  }
+
+  /* =============================================
+     CONTATO
+  ============================================= */
+  .contato {
+    background: var(--azul-principal);
+    padding: 72px 0;
+  }
+  .contato .section-label { color: var(--vermelho); }
+  .contato .section-title { color: #fff; }
+  .contato .section-sub { color: rgba(255,255,255,0.5); }
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .contato-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 28px;
+  }
+  .contato-icon {
+    font-size: 28px;
+    color: var(--vermelho);
+    margin-bottom: 14px;
+  }
+  .contato-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .contato-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--verde-whatsapp);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-wa:hover { background: #1ebe5d; }
+
+  /* =============================================
+     AVALIAÇÕES
+  ============================================= */
+  .avaliacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .avaliacao-card {
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    padding: 20px;
+    border-left: 3px solid var(--vermelho);
+  }
+  .stars {
+    color: var(--vermelho);
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .quote-mark {
+    font-size: 32px;
+    color: var(--vermelho);
+    line-height: 1;
+    opacity: 0.4;
+    font-family: Georgia, serif;
+    margin-bottom: 4px;
+  }
+  .avaliacao-text {
+    font-size: 12px;
+    color: var(--cinza-texto);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .avaliacao-autor {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--azul-principal);
+  }
+
+  /* =============================================
+     FOOTER
+  ============================================= */
+  .footer {
+    background: var(--azul-footer);
+    padding: 48px 0 28px;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .footer-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--vermelho);
+  }
+  .footer-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .footer-info {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.9;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .footer-socials a {
+    font-size: 20px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-socials a:hover { color: #fff; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* =============================================
+     WHATSAPP FLOAT
+  ============================================= */
+  .wa-float {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--verde-whatsapp);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 999;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .wa-float:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+  }
+  .wa-float svg { flex-shrink: 0; }
+
+  /* =============================================
+     NOTA DE REFERÊNCIA
+  ============================================= */
+  .ref-note {
+    background: #fffbeb;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 0;
+    font-size: 13px;
+    color: #92400e;
+    line-height: 1.6;
+  }
+  .ref-note strong { color: #78350f; }
+</style>
+</head>
+<body>
+
+<!-- NOTA DE REFERÊNCIA -->
+<div style="padding: 16px; background: #fffbeb; border-bottom: 2px solid #f59e0b;">
+  <div class="container">
+    <p class="ref-note">
+      <strong>📋 Mockup de Referência — Alagoas Medical v2</strong><br>
+      Este arquivo é a referência visual do projeto. Use junto com o <code>CLAUDE.md</code> ao iniciar cada componente.
+      Cores, espaçamentos, tipografia e estrutura de seções devem seguir exatamente este design.
+      Assets marcados como <strong>[PLACEHOLDER]</strong> serão enviados pelo cliente.
+    </p>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-brand">
+      <div class="nav-dot"></div>
+      <div class="nav-brand-text">
+        <div class="name">Alagoas Medical</div>
+        <div class="sub">Produtos Hospitalares</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#parceiros">Parceiros</a>
+      <a href="#produto">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato" class="nav-cta">Falar com vendas</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Maceió · Alagoas · desde 2018</div>
+      <h1 class="hero-title">
+        Materiais hospitalares com <em>excelência</em> e suporte técnico
+      </h1>
+      <p class="hero-sub">
+        Distribuição de produtos de alta complexidade para clínicas, hospitais
+        e atendimentos Home Care em Alagoas.
+      </p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-red">Falar com vendas</a>
+        <a href="#sobre" class="btn-ghost">Conhecer a empresa</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">7<span>+</span></div>
+        <div class="stat-label">anos de experiência</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">marcas parceiras</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>100</span>%</div>
+        <div class="stat-label">suporte técnico</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="section" id="parceiros">
+  <div class="container">
+    <div class="section-label">Parceiros</div>
+    <h2 class="section-title">Marcas que representamos</h2>
+    <p class="section-sub">Trabalhamos com as melhores marcas do mercado</p>
+    <div class="parceiros-grid">
+      <a href="https://www.carilexmedical.com/" target="_blank" rel="noopener noreferrer" class="parceiro-card">
+        <div class="parceiro-icon">🛏️</div>
+        <div class="parceiro-info">
+          <div class="name">Carilex Medical</div>
+          <div class="desc">Colchões e superfícies terapêuticas</div>
+          <span class="badge">Parceiro</span>
+        </div>
+      </a>
+      <a href="https://www.curatec.com.br/" target="_blank" rel="noopener noreferrer" class="parceiro-card">
+        <div class="parceiro-icon">🩹</div>
+        <div class="parceiro-info">
+          <div class="name">Curatec</div>
+          <div class="desc">Curativos de alta complexidade</div>
+          <span class="badge">Parceiro</span>
+        </div>
+      </a>
+      <a href="https://www.flenhealth.com/" target="_blank" rel="noopener noreferrer" class="parceiro-card">
+        <div class="parceiro-icon">💊</div>
+        <div class="parceiro-info">
+          <div class="name">Flen Health</div>
+          <div class="desc">Curativos enzimáticos especializados</div>
+          <span class="badge">Parceiro</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO EM DESTAQUE -->
+<section class="section produto" id="produto">
+  <div class="container">
+    <div class="section-label">Produto em Destaque</div>
+    <div class="produto-inner">
+      <div class="produto-img-wrap">
+        <div class="produto-badge">Em destaque</div>
+        <div class="produto-placeholder">💊</div>
+        <!-- substituir por: <img src="/images/flaminal-produto.png" alt="Flaminal — curativo enzimático Flen Health"> -->
+      </div>
+      <div class="produto-content">
+        <div class="produto-marca">
+          <span class="produto-marca-logo">Flen Health</span>
+          <!-- substituir por: <img src="/images/flenhealth-logo.png" alt="Flen Health" height="24"> -->
+        </div>
+        <h2 class="produto-title">Flaminal</h2>
+        <p class="produto-desc">
+          [PLACEHOLDER — aguardando texto do cliente]<br>
+          Descrição do produto, indicações, diferenciais e benefícios do Flaminal.
+        </p>
+        <div class="produto-checks">
+          <div class="produto-check">
+            <span class="check-icon">✓</span>
+            [PLACEHOLDER] Indicação de uso 1
+          </div>
+          <div class="produto-check">
+            <span class="check-icon">✓</span>
+            [PLACEHOLDER] Indicação de uso 2
+          </div>
+          <div class="produto-check">
+            <span class="check-icon">✓</span>
+            [PLACEHOLDER] Indicação de uso 3
+          </div>
+        </div>
+        <a href="https://wa.me/message/PRTC3KC2G4JCD1" target="_blank" rel="noopener noreferrer" class="btn-red">
+          Solicitar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre" style="background: var(--cinza-superficie);">
+  <div class="container">
+    <div class="section-label">Sobre</div>
+    <div class="sobre-inner">
+      <div>
+        <div class="sobre-img">🏥</div>
+        <!-- substituir por: <img src="/images/alagoas-medical-foto.jpeg" alt="Equipe Alagoas Medical"> -->
+      </div>
+      <div>
+        <h2 class="section-title">Alagoas Medical</h2>
+        <p class="sobre-text">
+          Atuamos desde 2018 na distribuição de materiais hospitalares voltados
+          para clínicas, hospitais, instituições públicas e atendimentos
+          domiciliares. Com expertise no tratamento de feridas de alta
+          complexidade, oferecemos suporte técnico e produtos de alto desempenho.
+        </p>
+        <div class="sobre-checks">
+          <div class="sobre-check">
+            <span class="check-icon">✓</span>
+            Atendimento humanizado e profissional
+          </div>
+          <div class="sobre-check">
+            <span class="check-icon">✓</span>
+            Parceria com marcas líderes do mercado
+          </div>
+          <div class="sobre-check">
+            <span class="check-icon">✓</span>
+            Suporte técnico especializado em cada entrega
+          </div>
+        </div>
+        <div class="founder">
+          <div class="founder-avatar">👤</div>
+          <!-- substituir por: <img src="/images/proprietaria.jpeg" ...> -->
+          <div>
+            <div class="founder-role">Fundadora · Enfermeira</div>
+            <div class="founder-name">Cleocina Barros</div>
+            <div class="founder-bio">
+              Mais de 10 anos de experiência em saúde, especialista em feridas
+              complexas e atendimentos Home Care.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="container">
+    <div class="section-label">Contato</div>
+    <h2 class="section-title">Fale com a nossa equipe</h2>
+    <p class="section-sub">Prontos para atender clínicas, hospitais e pacientes</p>
+    <div class="contato-grid">
+      <div class="contato-card">
+        <div class="contato-icon">📦</div>
+        <div class="contato-title">Vendas e produtos</div>
+        <div class="contato-desc">Dúvidas sobre produtos, pedidos ou suporte comercial</div>
+        <a href="https://wa.me/message/PRTC3KC2G4JCD1" target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L.057 23.428a.5.5 0 0 0 .609.61l5.71-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.893 9.893 0 0 1-5.031-1.371l-.361-.214-3.733.97.999-3.62-.235-.374A9.861 9.861 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+          </svg>
+          Falar com vendas
+        </a>
+      </div>
+      <div class="contato-card">
+        <div class="contato-icon">🩺</div>
+        <div class="contato-title">Curativos e Home Care</div>
+        <div class="contato-desc">Orientações técnicas com nossa especialista</div>
+        <a href="https://wa.me/558299245371" target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L.057 23.428a.5.5 0 0 0 .609.61l5.71-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.893 9.893 0 0 1-5.031-1.371l-.361-.214-3.733.97.999-3.62-.235-.374A9.861 9.861 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+          </svg>
+          Falar com especialista
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="section" id="avaliacoes">
+  <div class="container">
+    <div class="section-label">Avaliações</div>
+    <h2 class="section-title">O que dizem sobre nós</h2>
+    <p class="section-sub">Clientes reais, experiências reais</p>
+    <div class="avaliacoes-grid">
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="avaliacao-text">Atendimento personalizado. Respeito e empatia. Profissionais com o compromisso na escuta junto ao que a gente precisa.</div>
+        <div class="avaliacao-autor">Ana Carolina B. Peixoto</div>
+      </div>
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="avaliacao-text">Profissional super competente e mix de curativos bem diferenciado. Parabéns.</div>
+        <div class="avaliacao-autor">Meiga Menina Theotonio</div>
+      </div>
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="avaliacao-text">Sou cliente antiga! Toda assistência que precisei recebi com plenitude! Equipe top! Sempre indico!</div>
+        <div class="avaliacao-autor">Aline Viana</div>
+      </div>
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="avaliacao-text">Excelente atendimento, produtos de qualidade e entrega rápida. Recomendo muito!</div>
+        <div class="avaliacao-autor">Tatiana Michaello</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-dot"></div>
+          <div class="footer-name">Alagoas Medical</div>
+        </div>
+        <div class="footer-info">
+          R. Srg. Nelmont, 76b · Gruta de Lourdes · Maceió - AL · 57052-815<br>
+          (82) 3024-7070 · alagoasmedical@gmail.com<br>
+          CNPJ: 30.788.967/0001-40
+        </div>
+      </div>
+      <div class="footer-socials">
+        <a href="https://wa.me/558230247070" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">📱</a>
+        <a href="https://instagram.com/alagoasmedical" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+        <a href="https://facebook.com/alagoasmedical" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👥</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Alagoas Medical · Todos os direitos reservados</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/message/PRTC3KC2G4JCD1" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Falar pelo WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L.057 23.428a.5.5 0 0 0 .609.61l5.71-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.893 9.893 0 0 1-5.031-1.371l-.361-.214-3.733.97.999-3.62-.235-.374A9.861 9.861 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+  </svg>
+  Falar pelo WhatsApp
+</a>
+
+</body>
+</html>

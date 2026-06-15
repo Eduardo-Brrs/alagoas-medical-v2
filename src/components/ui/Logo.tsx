@@ -3,35 +3,49 @@ import { EMPRESA } from "@/lib/constants";
 
 /**
  * Wordmark da marca: ponto vermelho + nome + subtítulo.
- * `variant` controla a cor do texto para fundos claros ou escuros.
+ * - `navbar`: nome azul (claro) / branco (dark)
+ * - `footer`: nome branco, sem subtítulo
  */
 export default function Logo({
-  variant = "dark",
+  variant = "navbar",
   href = "#inicio",
 }: {
-  variant?: "dark" | "light";
+  variant?: "navbar" | "footer";
   href?: string;
 }) {
-  const nameColor = variant === "light" ? "text-white" : "text-foreground";
-  const subColor = variant === "light" ? "text-white/60" : "text-muted";
+  if (variant === "footer") {
+    return (
+      <Link
+        href={href}
+        className="flex items-center gap-2 rounded-sm"
+        aria-label={EMPRESA.nome}
+      >
+        <span
+          className="h-2 w-2 flex-shrink-0 rounded-full bg-brand-red"
+          aria-hidden="true"
+        />
+        <span className="text-[15px] font-medium text-white">
+          {EMPRESA.nome}
+        </span>
+      </Link>
+    );
+  }
 
   return (
     <Link
       href={href}
-      className="group flex items-center gap-2.5 rounded-sm"
+      className="flex items-center gap-2.5 rounded-sm"
       aria-label={`${EMPRESA.nome} — ${EMPRESA.slogan}`}
     >
       <span
         className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-brand-red"
         aria-hidden="true"
       />
-      <span className="flex flex-col leading-none">
-        <span className={`text-base font-semibold tracking-tight ${nameColor}`}>
+      <span className="flex flex-col leading-tight">
+        <span className="text-[15px] font-medium tracking-tight text-brand-blue dark:text-white">
           {EMPRESA.nome}
         </span>
-        <span
-          className={`text-[10px] font-medium uppercase tracking-[0.12em] ${subColor}`}
-        >
+        <span className="text-[10px] font-normal text-muted">
           {EMPRESA.slogan}
         </span>
       </span>

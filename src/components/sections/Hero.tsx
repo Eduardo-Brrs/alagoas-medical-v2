@@ -8,30 +8,26 @@ export default function Hero() {
       id="inicio"
       className="relative overflow-hidden bg-brand-blue text-white"
     >
-      {/* Shape geométrico vermelho sutil */}
+      {/* Painel vermelho angulado (decorativo) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rotate-12 rounded-[4rem] bg-brand-red/10 blur-2xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-brand-blue-mid/30 blur-3xl"
+        className="pointer-events-none absolute right-0 top-0 bottom-0 hidden w-[35%] bg-brand-red opacity-[0.07] [clip-path:polygon(20%_0%,100%_0%,100%_100%,0%_100%)] md:block"
       />
 
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.5fr_1fr] lg:items-center lg:gap-16 lg:py-28">
-        {/* Coluna de texto */}
-        <div>
+      <div className="relative mx-auto flex max-w-[1100px] flex-col px-6 md:flex-row md:items-stretch">
+        {/* Conteúdo */}
+        <div className="flex-1 pt-16 pb-10 md:py-[72px] md:pr-12">
           <SectionLabel>Maceió · Alagoas · desde 2018</SectionLabel>
-          <h1 className="mt-4 text-4xl font-medium leading-[1.1] sm:text-5xl lg:text-6xl">
-            Materiais hospitalares com excelência e suporte técnico
+          <h1 className="mt-5 max-w-[500px] text-[32px] font-medium leading-[1.15] tracking-tight sm:text-4xl md:text-[38px]">
+            Materiais hospitalares com{" "}
+            <span className="text-brand-red">excelência</span> e suporte técnico
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-            Distribuição de produtos hospitalares e soluções para o tratamento
-            de feridas complexas, com atendimento especializado para clínicas,
-            hospitais e Home Care.
+          <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/65">
+            Distribuição de produtos de alta complexidade para clínicas,
+            hospitais e atendimentos Home Care em Alagoas.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button href="#contato" variant="primary">
               Falar com vendas
             </Button>
@@ -41,17 +37,26 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bloco de stats — lateral no desktop, row abaixo no mobile */}
-        <ul className="grid grid-cols-3 gap-4 lg:grid-cols-1 lg:gap-0 lg:divide-y lg:divide-white/10 lg:rounded-2xl lg:border lg:border-white/10 lg:bg-white/5">
+        {/* Stats — lista vertical no desktop, row no mobile */}
+        <ul className="grid grid-cols-3 gap-4 pb-16 md:flex md:min-w-[220px] md:flex-col md:justify-center md:gap-0 md:border-l md:border-white/10 md:pb-0 md:pl-12">
           {HERO_STATS.map((stat) => (
             <li
               key={stat.label}
-              className="rounded-xl border border-white/10 bg-white/5 p-4 text-center lg:rounded-none lg:border-0 lg:bg-transparent lg:p-6 lg:text-left"
+              className="md:border-b md:border-white/[0.08] md:py-5 md:last:border-b-0"
             >
-              <span className="block text-3xl font-semibold text-white lg:text-4xl">
-                {stat.valor}
+              <span
+                className={`block font-medium leading-tight tracking-tight ${
+                  stat.num.length > 3
+                    ? "text-xl md:text-2xl"
+                    : "text-3xl md:text-4xl"
+                }`}
+              >
+                {stat.num}
+                {stat.accent && (
+                  <span className="text-brand-red">{stat.accent}</span>
+                )}
               </span>
-              <span className="mt-1 block text-xs text-white/60 lg:text-sm">
+              <span className="mt-1 block text-[11px] text-white/50">
                 {stat.label}
               </span>
             </li>
