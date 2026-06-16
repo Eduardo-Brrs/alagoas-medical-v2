@@ -10,14 +10,40 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ## ⏱️ Estado atual de execução (atualizado em 2026-06-16)
 
-**Bloco 6 em andamento — SEO ✅ feito. Falta só GA + consentimento.**
+**Bloco 6 — SEO ✅ e GA+consentimento ✅ (código pronto). Falta deploy.**
 Site completo de ponta a ponta (todas as seções buildando com `output: export`).
 Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo").
 
-**Próximo passo combinado:** **Google Analytics** (cliente ainda sem ID do GA4) +
-**ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas não
-seta cookies/GA). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com`
-no `script-src`/`connect-src` do CSP em `vercel.json`.
+**Próximo passo combinado:** **deploy na Vercel** + migração de domínio (ver "Deploy
+e domínio" abaixo). O único pendente de código é colar o `NEXT_PUBLIC_GA_ID` real
+quando o cliente criar a propriedade GA4.
+
+### Google Analytics + consentimento — feito (2026-06-16)
+GA4 carregado **só após "Aceitar"** no banner (LGPD). Código 100% pronto; só falta o ID.
+- `src/lib/gtag.ts`: lê `NEXT_PUBLIC_GA_ID` (embutido no build). Sem ID = no-op total.
+  `loadGoogleAnalytics()` injeta o gtag.js de forma idempotente.
+- `FloatingWidgets.tsx`: chama `loadGoogleAnalytics()` no "Aceitar" e no mount se o
+  visitante já tinha aceitado (`localStorage cookie_consent === "accepted"`). "Recusar"
+  nunca carrega nada.
+- **CSP em `vercel.json`** já libera `googletagmanager.com` (script/connect) +
+  `*.google-analytics.com`/`*.analytics.google.com` (connect/img). Inofensivo sem ID.
+- **`.env.example`** (destravado no `.gitignore` com `!.env.example`) documenta a var.
+  Definir `NEXT_PUBLIC_GA_ID` em `.env.local` (local) e nas Env Vars da Vercel (prod).
+
+### Deploy e domínio (decidido com o cliente, 2026-06-16)
+- **Hospedagem → Vercel (grátis).** O projeto já está pronto pra Vercel (`output: export`
+  + `vercel.json`). Deploy via GitHub (cliente/Eduardo têm conta) = publica a cada push.
+- **Domínio = `alagoasmedical.com.br`** (confirmado). Registrado/gerenciado na **UOL**;
+  DNS hoje aponta pra UOL; **MX já migrados pro Google Workspace** (e-mail profissional).
+- **"Domínio Google" NÃO é opção:** Google Domains foi descontinuado (vendido à
+  Squarespace, 2023–24) E `.com.br` só existe no Registro.br. A economia vem de
+  **cancelar a HOSPEDAGEM UOL** (cara) e ir pra Vercel grátis — o domínio fica.
+- **Plano de migração (sem derrubar e-mail):** manter o DNS na UOL e editar **só** o
+  registro do site (A/CNAME que aponta pro site v1) pra apontar pra Vercel. **Os MX do
+  Google NÃO se tocam.** Depois cancelar só a hospedagem UOL (Opção A); se a UOL
+  dificultar manter domínio-só, transferir o `.com.br` pro Registro.br (Opção B).
+- **Ao publicar:** trocar o placeholder `SITE_URL` em `constants.ts` se o domínio final
+  divergir, e setar `NEXT_PUBLIC_GA_ID` nas Env Vars da Vercel.
 
 ### SEO — feito (2026-06-16)
 Criados `app/sitemap.ts`, `app/robots.ts` e `app/opengraph-image.tsx`. Build emite
@@ -109,7 +135,7 @@ ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações +
 
 ### Pendências (Bloco 6)
 - ~~`app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx`~~ ✅ feito (2026-06-16) — ver "SEO — feito" no topo.
-- **Google Analytics** + **ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas o site não seta cookies/GA — ativar GA só após "Aceitar"). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com` no `script-src`/`connect-src` do CSP em `vercel.json`.
+- ~~**Google Analytics** + ativar o consentimento do CookieBanner~~ ✅ feito (2026-06-16) — código pronto, falta só o `NEXT_PUBLIC_GA_ID` real do cliente. Ver "Google Analytics + consentimento" no topo.
 - ~~Revisão final: Lighthouse (>90), acessibilidade, dark mode, mobile.~~ ✅ feito
   (2026-06-16) — ver seção "Revisão final" acima. Falta só reconfirmar em mobile real
   após o deploy (o 81 é do preset throttled).

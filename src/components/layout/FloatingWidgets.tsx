@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WhatsAppFloat from "@/components/sections/WhatsAppFloat";
 import CookieBanner from "@/components/ui/CookieBanner";
 import { useHydrated } from "@/lib/useHydrated";
+import { loadGoogleAnalytics } from "@/lib/gtag";
 
 /**
  * Coordena os elementos fixos do canto inferior.
@@ -23,10 +24,17 @@ export default function FloatingWidgets() {
 
   const bannerOpen = consent === null;
 
+  // Visitante que já aceitou numa sessão anterior: inicializa o GA ao montar.
+  useEffect(() => {
+    if (hydrated && localStorage.getItem("cookie_consent") === "accepted") {
+      loadGoogleAnalytics();
+    }
+  }, [hydrated]);
+
   const resolve = (value: "accepted" | "declined") => {
     localStorage.setItem("cookie_consent", value);
     setChoice(value);
-    // Inicializar Google Analytics aqui quando value === "accepted".
+    if (value === "accepted") loadGoogleAnalytics();
   };
 
   return (
