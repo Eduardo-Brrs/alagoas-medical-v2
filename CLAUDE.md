@@ -28,17 +28,34 @@ otimização de imagem inerente ao `output: export`; em desktop/CDN é ~98.
 
 ### Tokens de cor acessíveis (decisão do cliente, 2026-06-16)
 O vermelho de marca `#ee3135` reprovava contraste como texto/fill (4.09 com branco)
-e o verde WhatsApp `#25D366` (1.98). Cliente aprovou ajustar para passar AA. Novos
-tokens em `globals.css` (`@theme`):
-- `--color-brand-red-strong: #c9282c` → texto/fill vermelho em fundo CLARO (botões
-  primários, badge, eyebrows no claro, skip link, botão Aceitar). 5.49:1 com branco.
-- `--color-brand-red-strong-hover: #b01b1f` → hover dos fills.
-- `--color-brand-red-light: #ff8f91` → vermelho claro p/ texto em fundo ESCURO/azul
-  (eyebrows e palavras de destaque no Hero/Contato). 5.08:1.
+e o verde WhatsApp `#25D366` (1.98). Cliente aprovou ajustar para passar AA, mas
+**mantendo o vermelho o mais vivo possível** (1ª calibração ficou muito escura/rosada
+e "matou" a identidade vermelha — recalibrada). Tokens em `globals.css` (`@theme`):
+- `--color-brand-red-strong: #d62c30` → fills (botões/badge/cookie/skip-link) +
+  texto vermelho em fundo CLARO (eyebrows, cargo da fundadora, "Conhecer").
+  4.93:1 com branco / 4.67:1 na superfície cinza.
+- `--color-brand-red-strong-hover: #b8252a` → hover dos fills.
 - `--color-whatsapp: #075e54` / `--color-whatsapp-hover: #054b43` → verde escuro
   oficial do WhatsApp, texto branco (7.67:1). Usado em Button `whatsapp` e no float.
 - `#ee3135` (`brand-red`) fica reservado a usos **decorativos/ícones** (ponto do
   logo, painel do hero, borda dos cards, estrelas) — regra 3:1 não-texto, que passa.
+
+**Regra do vermelho em fundo ESCURO (azul):** NÃO se usa vermelho em TEXTO sobre o
+azul — para passar contraste o vermelho teria que clarear (vira salmão), e misturar
+salmão com o vermelho forte do botão ficava visualmente embaralhado (decisão cliente,
+2026-06-16). Então, sobre fundo azul: o vermelho vivo aparece **só no botão** (fill);
+as eyebrows (`SectionLabel onDark`) viram `text-white/70` e a palavra de destaque do
+hero ("excelência") + os acentos das stats ficam **brancos**. Tokens salmão
+(`brand-red-accent`, `brand-red-light`) foram removidos — não há mais texto vermelho
+sobre escuro no site.
+
+> ⚠️ **Tailwind v4 + dev server:** ao editar tokens `@theme` no `globals.css` com o
+> `npm run dev` rodando, as classes de cor NOVAS podem não regenerar (saem vazias →
+> botões/textos "somem" no claro). **Reinicie o `npm run dev`** após mexer no `@theme`.
+
+### Navbar
+Adicionado link **Contato** (`#contato`) entre Sobre e Avaliações, para a seção não
+ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações + botão CTA.
 
 ### Stack real (difere do briefing)
 - **Next 16 + React 19 + Tailwind CSS v4** (o briefing assumia Tailwind v3).

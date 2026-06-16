@@ -10,7 +10,7 @@ export default function SectionLabel({
   return (
     <p
       className={`text-[0.6875rem] font-medium uppercase tracking-[0.1em] ${
-        onDark ? "text-brand-red-light" : "text-brand-red-strong"
+        onDark ? "text-white/70" : "text-brand-red-strong"
       }`}
     >
       {children}

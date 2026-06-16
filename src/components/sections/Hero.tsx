@@ -19,9 +19,7 @@ export default function Hero() {
         <div className="flex-1 pt-16 pb-10 md:py-[72px] md:pr-12">
           <SectionLabel onDark>Maceió · Alagoas · desde 2018</SectionLabel>
           <h1 className="mt-5 max-w-[500px] text-[2rem] font-medium leading-[1.15] tracking-tight sm:text-4xl md:text-[2.375rem]">
-            Materiais hospitalares com{" "}
-            <span className="text-brand-red-light">excelência</span> e suporte
-            técnico
+            Materiais hospitalares com excelência e suporte técnico
           </h1>
           <p className="mt-4 max-w-[420px] text-[0.9375rem] leading-relaxed text-white/65">
             Distribuição de produtos de alta complexidade para clínicas,
@@ -53,9 +51,7 @@ export default function Hero() {
                 }`}
               >
                 {stat.num}
-                {stat.accent && (
-                  <span className="text-brand-red-light">{stat.accent}</span>
-                )}
+                {stat.accent}
               </span>
               <span className="mt-1 block text-[0.6875rem] text-white/70">
                 {stat.label}

@@ -15,13 +15,14 @@
   --color-brand-red: #ee3135;
   --color-brand-red-hover: #c9282c;
 
-  /* Tons acessíveis (WCAG AA) derivados do vermelho de marca:
-   * - strong:  texto/preenchimento vermelho sobre fundo CLARO (5.49:1 com branco)
-   * - light:   vermelho claro para texto sobre fundo ESCURO/azul (5.08:1)
+  /* Vermelho acessível (WCAG AA) para fills (botões/badge/cookie/skip-link) e
+   * texto vermelho sobre fundo CLARO (eyebrows, cargo da fundadora, "Conhecer").
+   * 4.93:1 com branco / 4.67:1 na superfície cinza — o mais vivo que passa AA.
+   * Sobre fundo ESCURO/azul NÃO se usa vermelho em texto (vira salmão para passar
+   * contraste): lá o vermelho fica só no botão; eyebrows viram cinza-claro.
    * O #ee3135 puro fica reservado a usos decorativos/ícones (regra 3:1). */
-  --color-brand-red-strong: #c9282c;
-  --color-brand-red-strong-hover: #b01b1f;
-  --color-brand-red-light: #ff8f91;
+  --color-brand-red-strong: #d62c30;
+  --color-brand-red-strong-hover: #b8252a;
 
   /* Verde escuro oficial do WhatsApp — texto branco passa AA (7.67:1) */
   --color-whatsapp: #075e54;

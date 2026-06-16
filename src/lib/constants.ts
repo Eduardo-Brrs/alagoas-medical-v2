@@ -163,5 +163,6 @@ export const NAV_LINKS = [
   { href: "#parceiros", label: "Parceiros" },
   { href: "#produto", label: "Produtos" },
   { href: "#sobre", label: "Sobre" },
+  { href: "#contato", label: "Contato" },
   { href: "#avaliacoes", label: "Avaliações" },
 ] as const;
