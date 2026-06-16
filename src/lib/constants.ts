@@ -3,6 +3,12 @@
  * Nunca hardcodar esses valores diretamente nos componentes — sempre importar daqui.
  */
 
+/**
+ * URL canônica do site (sem barra final). Usada em metadata, sitemap, robots e og:image.
+ * PLACEHOLDER — trocar quando o cliente confirmar o domínio final na Google.
+ */
+export const SITE_URL = "https://alagoasmedical.com.br";
+
 export const EMPRESA = {
   nome: "Alagoas Medical",
   slogan: "Produtos Hospitalares",

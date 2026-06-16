@@ -10,14 +10,25 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ## ⏱️ Estado atual de execução (atualizado em 2026-06-16)
 
-**Bloco 6 em andamento — revisão final feita; conteúdo de produtos atualizado.**
+**Bloco 6 em andamento — SEO ✅ feito. Falta só GA + consentimento.**
 Site completo de ponta a ponta (todas as seções buildando com `output: export`).
-Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo"). Falta
-do Bloco 6: SEO (sitemap/robots/og-image) e Google Analytics + ativação do consentimento.
+Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo").
 
-**Próximo passo combinado:** começar pelos arquivos de SEO (`sitemap.ts`/`robots.ts`/
-`opengraph-image.tsx`) — não dependem de domínio/GA/copy do cliente; usar o domínio
-placeholder e trocar depois. GA fica para o fim (cliente ainda sem ID do GA4).
+**Próximo passo combinado:** **Google Analytics** (cliente ainda sem ID do GA4) +
+**ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas não
+seta cookies/GA). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com`
+no `script-src`/`connect-src` do CSP em `vercel.json`.
+
+### SEO — feito (2026-06-16)
+Criados `app/sitemap.ts`, `app/robots.ts` e `app/opengraph-image.tsx`. Build emite
+`out/sitemap.xml`, `out/robots.txt` e `out/opengraph-image` (PNG 1200×630 válido).
+- **`SITE_URL` centralizada em `constants.ts`** (era hardcoded no `layout.tsx`) — é
+  o único lugar pra trocar o domínio quando confirmado. Ainda placeholder
+  `https://alagoasmedical.com.br`.
+- ⚠️ **Next 16 + `output: export` exige `export const dynamic = "force-static"`** em
+  TODAS as três rotas de metadata (sitemap/robots/opengraph-image) — sem isso o build
+  falha em "Collecting page data". A `opengraph-image.tsx` NÃO usa `runtime = 'edge'`
+  (incompatível com export); no runtime nodejs a imagem é gerada no build.
 
 ### Revisão final (Lighthouse, 2026-06-16)
 Build e `npm run lint` limpos. Scores (build estático servido localmente):
@@ -97,7 +108,7 @@ ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações +
 - **`FloatingWidgets`** coordena o botão flutuante do WhatsApp + o `CookieBanner`: enquanto o banner está aberto, o float fica oculto (evita sobreposição no "Aceitar").
 
 ### Pendências (Bloco 6)
-- `app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx` (sem `runtime='edge'` — incompatível com export).
+- ~~`app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx`~~ ✅ feito (2026-06-16) — ver "SEO — feito" no topo.
 - **Google Analytics** + **ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas o site não seta cookies/GA — ativar GA só após "Aceitar"). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com` no `script-src`/`connect-src` do CSP em `vercel.json`.
 - ~~Revisão final: Lighthouse (>90), acessibilidade, dark mode, mobile.~~ ✅ feito
   (2026-06-16) — ver seção "Revisão final" acima. Falta só reconfirmar em mobile real

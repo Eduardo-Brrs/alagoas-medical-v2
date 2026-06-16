@@ -3,14 +3,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import FloatingWidgets from "@/components/layout/FloatingWidgets";
+import { SITE_URL } from "@/lib/constants";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
 });
-
-const SITE_URL = "https://alagoasmedical.com.br";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
