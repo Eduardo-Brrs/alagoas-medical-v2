@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col gap-6 border-b border-white/[0.08] pb-8 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <Logo variant="footer" />
-            <address className="mt-3 text-xs not-italic leading-[1.9] text-white/35">
+            <address className="mt-3 text-xs not-italic leading-[1.9] text-white/60">
               <a
                 href={LINKS.mapas}
                 target="_blank"
@@ -48,7 +48,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp da Alagoas Medical"
-                className="block text-white/35 transition-colors hover:text-white"
+                className="block text-white/55 transition-colors hover:text-white"
               >
                 <WhatsAppIcon size={20} />
               </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Alagoas Medical"
-                className="block text-white/35 transition-colors hover:text-white"
+                className="block text-white/55 transition-colors hover:text-white"
               >
                 <InstagramIcon />
               </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook da Alagoas Medical"
-                className="block text-white/35 transition-colors hover:text-white"
+                className="block text-white/55 transition-colors hover:text-white"
               >
                 <FacebookIcon />
               </a>
@@ -80,7 +80,7 @@ export default function Footer() {
 
         {/* Base */}
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[0.6875rem] text-white/25">
+          <p className="text-[0.6875rem] text-white/55">
             © {new Date().getFullYear()} {EMPRESA.nome} · Todos os direitos
             reservados
           </p>

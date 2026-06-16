@@ -29,7 +29,7 @@ export default function CookieBanner({
         <button
           type="button"
           onClick={onAccept}
-          className="rounded-md bg-brand-red px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-red-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 focus-visible:ring-offset-brand-blue-footer"
+          className="rounded-md bg-brand-red-strong px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-red-strong-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 focus-visible:ring-offset-brand-blue-footer"
         >
           Aceitar
         </button>

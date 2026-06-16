@@ -8,10 +8,37 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ---
 
-## ⏱️ Estado atual de execução (atualizado em 2026-06-15)
+## ⏱️ Estado atual de execução (atualizado em 2026-06-16)
 
-**Paramos no fim do Bloco 5.** Site completo de ponta a ponta (todas as seções
-montadas e buildando com `output: export`). Falta o **Bloco 6** (SEO + GA + revisão final).
+**Bloco 6 em andamento — revisão final feita.** Site completo de ponta a ponta
+(todas as seções buildando com `output: export`). Falta do Bloco 6: SEO (sitemap/
+robots/og-image) e Google Analytics + ativação do consentimento.
+
+### Revisão final (Lighthouse, 2026-06-16)
+Build e `npm run lint` limpos. Scores (build estático servido localmente):
+**Accessibility 100 · Best Practices 100 · SEO 100 · Performance 98 (desktop)**.
+Performance mobile = 81 no preset throttled (4×CPU/4G) — limitada pela falta de
+otimização de imagem inerente ao `output: export`; em desktop/CDN é ~98.
+- **Lint:** o padrão "mounted gate" (setState em useEffect) reprovava no React 19.
+  Trocado por `useSyncExternalStore` via `src/lib/useHydrated.ts` (DarkModeToggle +
+  FloatingWidgets).
+- **Acessibilidade (WCAG AA):** corrigidos `aria-prohibited-attr` (role nas
+  estrelas), `label-content-name-mismatch` (removido aria-label redundante do Logo
+  e dos cards de Parceiros) e ~26 falhas de contraste.
+
+### Tokens de cor acessíveis (decisão do cliente, 2026-06-16)
+O vermelho de marca `#ee3135` reprovava contraste como texto/fill (4.09 com branco)
+e o verde WhatsApp `#25D366` (1.98). Cliente aprovou ajustar para passar AA. Novos
+tokens em `globals.css` (`@theme`):
+- `--color-brand-red-strong: #c9282c` → texto/fill vermelho em fundo CLARO (botões
+  primários, badge, eyebrows no claro, skip link, botão Aceitar). 5.49:1 com branco.
+- `--color-brand-red-strong-hover: #b01b1f` → hover dos fills.
+- `--color-brand-red-light: #ff8f91` → vermelho claro p/ texto em fundo ESCURO/azul
+  (eyebrows e palavras de destaque no Hero/Contato). 5.08:1.
+- `--color-whatsapp: #075e54` / `--color-whatsapp-hover: #054b43` → verde escuro
+  oficial do WhatsApp, texto branco (7.67:1). Usado em Button `whatsapp` e no float.
+- `#ee3135` (`brand-red`) fica reservado a usos **decorativos/ícones** (ponto do
+  logo, painel do hero, borda dos cards, estrelas) — regra 3:1 não-texto, que passa.
 
 ### Stack real (difere do briefing)
 - **Next 16 + React 19 + Tailwind CSS v4** (o briefing assumia Tailwind v3).
@@ -34,7 +61,9 @@ montadas e buildando com `output: export`). Falta o **Bloco 6** (SEO + GA + revi
 ### Pendências (Bloco 6)
 - `app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx` (sem `runtime='edge'` — incompatível com export).
 - **Google Analytics** + **ativar o consentimento do CookieBanner junto** (hoje o banner aparece mas o site não seta cookies/GA — ativar GA só após "Aceitar"). Ao adicionar GA, incluir `googletagmanager.com`/`google-analytics.com` no `script-src`/`connect-src` do CSP em `vercel.json`.
-- Revisão final: Lighthouse (>90), acessibilidade, dark mode, mobile.
+- ~~Revisão final: Lighthouse (>90), acessibilidade, dark mode, mobile.~~ ✅ feito
+  (2026-06-16) — ver seção "Revisão final" acima. Falta só reconfirmar em mobile real
+  após o deploy (o 81 é do preset throttled).
 - **Domínio real não confirmado** — `alagoasmedical.com.br` é placeholder em `metadata`/sitemap/robots.
 - Assets aguardando cliente: copy/indicações do Flaminal, demais produtos, e (ideal) logo da Flen em SVG/PNG transparente.
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import WhatsAppFloat from "@/components/sections/WhatsAppFloat";
 import CookieBanner from "@/components/ui/CookieBanner";
+import { useHydrated } from "@/lib/useHydrated";
 
 /**
  * Coordena os elementos fixos do canto inferior.
@@ -10,18 +11,21 @@ import CookieBanner from "@/components/ui/CookieBanner";
  * fica oculto para não sobrepor os botões Aceitar/Recusar.
  */
 export default function FloatingWidgets() {
-  // "pending" = ainda não lemos o localStorage (evita mismatch de hidratação)
-  const [consent, setConsent] = useState<"pending" | string | null>("pending");
+  const hydrated = useHydrated();
+  // Decisão tomada nesta sessão (sobrepõe o valor lido do localStorage).
+  const [choice, setChoice] = useState<string | null>(null);
 
-  useEffect(() => {
-    setConsent(localStorage.getItem("cookie_consent"));
-  }, []);
+  // Só lemos o localStorage após hidratar (evita mismatch). Antes disso
+  // tratamos como "pendente" e não renderizamos nem o banner nem o float.
+  const consent = hydrated
+    ? (choice ?? localStorage.getItem("cookie_consent"))
+    : "pending";
 
   const bannerOpen = consent === null;
 
   const resolve = (value: "accepted" | "declined") => {
     localStorage.setItem("cookie_consent", value);
-    setConsent(value);
+    setChoice(value);
     // Inicializar Google Analytics aqui quando value === "accepted".
   };
 

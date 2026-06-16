@@ -17,10 +17,11 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-[1100px] flex-col px-6 md:flex-row md:items-stretch">
         {/* Conteúdo */}
         <div className="flex-1 pt-16 pb-10 md:py-[72px] md:pr-12">
-          <SectionLabel>Maceió · Alagoas · desde 2018</SectionLabel>
+          <SectionLabel onDark>Maceió · Alagoas · desde 2018</SectionLabel>
           <h1 className="mt-5 max-w-[500px] text-[2rem] font-medium leading-[1.15] tracking-tight sm:text-4xl md:text-[2.375rem]">
             Materiais hospitalares com{" "}
-            <span className="text-brand-red">excelência</span> e suporte técnico
+            <span className="text-brand-red-light">excelência</span> e suporte
+            técnico
           </h1>
           <p className="mt-4 max-w-[420px] text-[0.9375rem] leading-relaxed text-white/65">
             Distribuição de produtos de alta complexidade para clínicas,
@@ -53,10 +54,10 @@ export default function Hero() {
               >
                 {stat.num}
                 {stat.accent && (
-                  <span className="text-brand-red">{stat.accent}</span>
+                  <span className="text-brand-red-light">{stat.accent}</span>
                 )}
               </span>
-              <span className="mt-1 block text-[0.6875rem] text-white/50">
+              <span className="mt-1 block text-[0.6875rem] text-white/70">
                 {stat.label}
               </span>
             </li>

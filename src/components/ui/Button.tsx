@@ -13,13 +13,13 @@ const sizes: Record<Size, string> = {
 };
 
 const variants: Record<Variant, string> = {
-  primary: "bg-brand-red text-white hover:bg-brand-red-hover",
+  primary: "bg-brand-red-strong text-white hover:bg-brand-red-strong-hover",
   ghost:
     "border border-border text-foreground hover:bg-surface focus-visible:ring-offset-background",
   // Sobre fundos escuros (hero, contato)
   ghostLight:
     "border border-white/30 text-white/80 hover:border-white/60 hover:text-white focus-visible:ring-offset-brand-blue",
-  whatsapp: "bg-[#25D366] text-white hover:bg-[#1ebe5d]",
+  whatsapp: "bg-whatsapp text-white hover:bg-whatsapp-hover",
 };
 
 type ButtonAsButton = {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 
 export default function DarkModeToggle({
   className = "",
@@ -9,9 +9,7 @@ export default function DarkModeToggle({
   className?: string;
 }) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useHydrated();
 
   const isDark = resolvedTheme === "dark";
 

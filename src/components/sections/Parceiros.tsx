@@ -31,7 +31,6 @@ function ParceiroCard({ parceiro }: { parceiro: Parceiro }) {
       href={parceiro.site}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${parceiro.nome} — abrir site em nova aba`}
       className="group flex h-full flex-col items-center rounded-xl border border-border bg-card p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-[0_1rem_3rem_rgba(13,60,110,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"
     >
       {/* Chip branco para uniformizar logos (transparentes e com fundo branco) */}
@@ -56,7 +55,7 @@ function ParceiroCard({ parceiro }: { parceiro: Parceiro }) {
       </h3>
       <p className="mt-1 text-xs text-muted">{parceiro.descricao}</p>
 
-      <span className="mt-4 inline-flex items-center gap-1 text-[0.6875rem] font-medium text-brand-red opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <span className="mt-4 inline-flex items-center gap-1 text-[0.6875rem] font-medium text-brand-red-strong opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         Conhecer
         <svg
           width="12"
@@ -72,6 +71,7 @@ function ParceiroCard({ parceiro }: { parceiro: Parceiro }) {
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>
       </span>
+      <span className="sr-only">(abre o site em nova aba)</span>
     </a>
   );
 }

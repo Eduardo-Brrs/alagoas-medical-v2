@@ -46,7 +46,11 @@ function AvaliacaoCard({ depoimento }: { depoimento: Depoimento }) {
 
 function Stars() {
   return (
-    <span className="mb-2 flex gap-0.5 text-brand-red" aria-label="5 de 5 estrelas">
+    <span
+      role="img"
+      className="mb-2 flex gap-0.5 text-brand-red"
+      aria-label="5 de 5 estrelas"
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}

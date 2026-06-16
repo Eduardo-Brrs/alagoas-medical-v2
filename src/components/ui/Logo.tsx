@@ -32,11 +32,7 @@ export default function Logo({
   }
 
   return (
-    <Link
-      href={href}
-      className="flex items-center gap-2.5 rounded-sm"
-      aria-label={`${EMPRESA.nome} — ${EMPRESA.slogan}`}
-    >
+    <Link href={href} className="flex items-center gap-2.5 rounded-sm">
       <span
         className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-brand-red"
         aria-hidden="true"

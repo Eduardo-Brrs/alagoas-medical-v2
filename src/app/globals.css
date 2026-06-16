@@ -15,6 +15,18 @@
   --color-brand-red: #ee3135;
   --color-brand-red-hover: #c9282c;
 
+  /* Tons acessíveis (WCAG AA) derivados do vermelho de marca:
+   * - strong:  texto/preenchimento vermelho sobre fundo CLARO (5.49:1 com branco)
+   * - light:   vermelho claro para texto sobre fundo ESCURO/azul (5.08:1)
+   * O #ee3135 puro fica reservado a usos decorativos/ícones (regra 3:1). */
+  --color-brand-red-strong: #c9282c;
+  --color-brand-red-strong-hover: #b01b1f;
+  --color-brand-red-light: #ff8f91;
+
+  /* Verde escuro oficial do WhatsApp — texto branco passa AA (7.67:1) */
+  --color-whatsapp: #075e54;
+  --color-whatsapp-hover: #054b43;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
 }

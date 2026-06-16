@@ -19,7 +19,7 @@ export default function SectionHeader({
 }) {
   return (
     <div className={className}>
-      <SectionLabel>{label}</SectionLabel>
+      <SectionLabel onDark={onDark}>{label}</SectionLabel>
       {title && (
         <h2
           className={`mt-2 text-[1.75rem] font-medium tracking-tight ${
@@ -32,7 +32,7 @@ export default function SectionHeader({
       {subtitle && (
         <p
           className={`mt-1.5 text-sm ${
-            onDark ? "text-white/50" : "text-muted"
+            onDark ? "text-white/70" : "text-muted"
           }`}
         >
           {subtitle}

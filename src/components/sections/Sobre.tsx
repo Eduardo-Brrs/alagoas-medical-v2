@@ -40,7 +40,7 @@ export default function Sobre() {
               className="h-14 w-14 flex-shrink-0 rounded-full object-cover"
             />
             <div>
-              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand-red">
+              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand-red-strong">
                 {SOBRE.fundadora.cargo}
               </p>
               <p className="mt-0.5 text-[0.9375rem] font-medium text-brand-blue dark:text-foreground">
