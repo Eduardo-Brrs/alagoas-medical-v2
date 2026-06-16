@@ -10,9 +10,14 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ## ⏱️ Estado atual de execução (atualizado em 2026-06-16)
 
-**Bloco 6 em andamento — revisão final feita.** Site completo de ponta a ponta
-(todas as seções buildando com `output: export`). Falta do Bloco 6: SEO (sitemap/
-robots/og-image) e Google Analytics + ativação do consentimento.
+**Bloco 6 em andamento — revisão final feita; conteúdo de produtos atualizado.**
+Site completo de ponta a ponta (todas as seções buildando com `output: export`).
+Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo"). Falta
+do Bloco 6: SEO (sitemap/robots/og-image) e Google Analytics + ativação do consentimento.
+
+**Próximo passo combinado:** começar pelos arquivos de SEO (`sitemap.ts`/`robots.ts`/
+`opengraph-image.tsx`) — não dependem de domínio/GA/copy do cliente; usar o domínio
+placeholder e trocar depois. GA fica para o fim (cliente ainda sem ID do GA4).
 
 ### Revisão final (Lighthouse, 2026-06-16)
 Build e `npm run lint` limpos. Scores (build estático servido localmente):
@@ -53,6 +58,12 @@ sobre escuro no site.
 > `npm run dev` rodando, as classes de cor NOVAS podem não regenerar (saem vazias →
 > botões/textos "somem" no claro). **Reinicie o `npm run dev`** após mexer no `@theme`.
 
+> ⚠️ **Git no Windows/PowerShell:** (1) NÃO use aspas duplas DENTRO da mensagem do
+> `git commit -m "..."` — uma `"` interna fecha a string e o git trata o resto como
+> arquivos (`error: pathspec ... did not match`). Use aspas simples ou nenhuma. (2) O
+> PowerShell 5.1 não aceita `&&` para encadear comandos — rode `git add`, `git commit`,
+> `git push` em linhas separadas (ou separe com `;`).
+
 ### Navbar
 Adicionado link **Contato** (`#contato`) entre Sobre e Avaliações, para a seção não
 ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações + botão CTA.
@@ -67,10 +78,20 @@ ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações +
 
 ### Decisões de conteúdo/design (cliente + mockup)
 - **`mockup-referencia.html`** na raiz é a referência visual (não vai pro deploy; export só serve `public/` + app).
-- **Navbar:** Parceiros · Produtos (`#produto`) · Sobre · Avaliações (sem "Início").
+- **Navbar:** Parceiros · Produtos (`#produto`) · Sobre · Contato · Avaliações (sem "Início"; "Contato" adicionado em 2026-06-16).
 - **Hero stats:** `7+ anos` · `Home Care / & linha hospitalar` · `100% suporte` (o "3 marcas" foi removido a pedido do cliente).
 - **Parceiros:** logos grandes em chip branco + hover animado (estilo `featured-block` do v1). Logo da Flen é PNG paleta com **fundo branco** → sempre precisa de chip claro atrás.
-- **Produtos em Destaque:** refatorado de produto único → **grade de cards** via `PRODUTOS[]` em `constants.ts`. Só o **Flaminal** é real; os outros 2 são placeholders "Em breve". Descrição/indicações do Flaminal ainda são **placeholder** (aguardando cliente).
+- **Produtos em Destaque:** **grade de cards** via `PRODUTOS[]` em `constants.ts` —
+  intercambiável: **adicionar produto = adicionar um objeto no array** (o `ProdutoCard`
+  já é acessível, herda alt/contraste/botão). Hoje **3 produtos reais, sem badge** (a
+  seção inteira já é "em destaque", então o badge "Em destaque" foi removido):
+  - **Flaminal** (Flen Health) — copy curta do cliente já aplicada.
+  - **Solução com PHMB + EDTA** e **Creme Barreira** (Curatec) — copy ainda
+    **provisória** (confirmar com texto oficial do fabricante).
+  - **Convenção de título:** nome do produto **sem o tamanho**; o tamanho vai na
+    `descricao` (ex.: "Frasco de 350 ml", "Disponível em 60 g e 100 g (foto: 100 g)").
+  - **Imagens:** salvar com nome **web-safe** kebab-case ASCII (sem espaço, `+`,
+    acento ou maiúscula) — senão quebram em `output: export` + `next/image`.
 - **Sobre:** foto do evento (`alagoas-medical-foto.jpeg`) **removida** (era com pessoal da Urgo, marca que saiu). Seção é coluna única agora; card da fundadora (Cleocina) mantido.
 - **Contato:** card de Home Care usa **dois botões** (Cleocina + Mariana) em vez do dropdown.
 - **`FloatingWidgets`** coordena o botão flutuante do WhatsApp + o `CookieBanner`: enquanto o banner está aberto, o float fica oculto (evita sobreposição no "Aceitar").
@@ -82,7 +103,7 @@ ficar órfã. Ordem: Parceiros · Produtos · Sobre · Contato · Avaliações +
   (2026-06-16) — ver seção "Revisão final" acima. Falta só reconfirmar em mobile real
   após o deploy (o 81 é do preset throttled).
 - **Domínio real não confirmado** — `alagoasmedical.com.br` é placeholder em `metadata`/sitemap/robots.
-- Assets aguardando cliente: copy/indicações do Flaminal, demais produtos, e (ideal) logo da Flen em SVG/PNG transparente.
+- Assets/copy aguardando cliente: **copy oficial da Curatec** (Solução + Creme Barreira — hoje provisória), indicações detalhadas do Flaminal se quiserem, e (ideal) logo da Flen em SVG/PNG transparente. O cliente ainda vai fazer escolhas de design e **adicionar mais produtos** na aba Produtos (ver convenção em "Produtos em Destaque").
 
 ### Segurança (revisão feita em 2026-06-15)
 Site estático, sem back-end → SQL injection, CSRF, auth e vazamento de env **não se aplicam**.
