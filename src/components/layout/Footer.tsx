@@ -5,7 +5,7 @@ import { EMPRESA, LINKS } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="bg-brand-blue-footer pt-12 pb-7 text-white">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         {/* Topo */}
         <div className="flex flex-col gap-6 border-b border-white/[0.08] pb-8 sm:flex-row sm:items-start sm:justify-between">
           <div>

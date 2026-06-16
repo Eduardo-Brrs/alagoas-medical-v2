@@ -21,7 +21,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <nav
         aria-label="Navegação principal"
-        className="mx-auto flex max-w-[1100px] items-center justify-between px-6 py-3.5"
+        className="mx-auto flex max-w-site items-center justify-between px-6 py-3.5"
       >
         <Logo />
 
@@ -69,7 +69,7 @@ export default function Navbar() {
           id="mobile-menu"
           className="border-t border-border bg-background md:hidden"
         >
-          <ul className="mx-auto flex max-w-[1100px] flex-col px-6 py-2">
+          <ul className="mx-auto flex max-w-site flex-col px-6 py-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a

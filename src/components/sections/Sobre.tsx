@@ -5,7 +5,7 @@ import { SOBRE } from "@/lib/constants";
 export default function Sobre() {
   return (
     <section id="sobre" className="bg-surface py-[72px]">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         <SectionLabel>Sobre</SectionLabel>
 
         <div className="mt-6 max-w-3xl">

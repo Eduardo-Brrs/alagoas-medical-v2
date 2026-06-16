@@ -4,7 +4,7 @@ import { DEPOIMENTOS, type Depoimento } from "@/lib/constants";
 export default function Avaliacoes() {
   return (
     <section id="avaliacoes" className="py-[72px]">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         <SectionHeader
           label="Avaliações"
           title="O que dizem sobre nós"

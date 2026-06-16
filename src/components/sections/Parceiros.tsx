@@ -5,7 +5,7 @@ import { PARCEIROS, type Parceiro } from "@/lib/constants";
 export default function Parceiros() {
   return (
     <section id="parceiros" className="py-[72px]">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         <SectionHeader
           label="Parceiros"
           title="Marcas que representamos"

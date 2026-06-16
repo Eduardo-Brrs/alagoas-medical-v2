@@ -6,7 +6,7 @@ import { PRODUTOS, type Produto } from "@/lib/constants";
 export default function ProdutosDestaque() {
   return (
     <section id="produto" className="bg-surface py-[72px]">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         <SectionHeader
           label="Produtos"
           title="Produtos em Destaque"

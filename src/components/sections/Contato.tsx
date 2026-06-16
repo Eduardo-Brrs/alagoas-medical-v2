@@ -6,7 +6,7 @@ import { LINKS } from "@/lib/constants";
 export default function Contato() {
   return (
     <section id="contato" className="bg-brand-blue py-[72px]">
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="mx-auto max-w-site px-6">
         <SectionHeader
           label="Contato"
           title="Fale com a nossa equipe"

@@ -14,7 +14,7 @@ export default function Hero() {
         className="pointer-events-none absolute right-0 top-0 bottom-0 hidden w-[35%] bg-brand-red opacity-[0.07] [clip-path:polygon(20%_0%,100%_0%,100%_100%,0%_100%)] md:block"
       />
 
-      <div className="relative mx-auto flex max-w-[1100px] flex-col px-6 md:flex-row md:items-stretch">
+      <div className="relative mx-auto flex max-w-site flex-col px-6 md:flex-row md:items-stretch">
         {/* Conteúdo */}
         <div className="flex-1 pt-16 pb-10 md:py-[72px] md:pr-12">
           <SectionLabel onDark>Maceió · Alagoas · desde 2018</SectionLabel>
