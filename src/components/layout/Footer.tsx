@@ -48,7 +48,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp da Alagoas Medical"
-                className="block text-white/55 transition-colors hover:text-white"
+                className="-m-1 block p-1 text-white/55 transition-colors hover:text-white"
               >
                 <WhatsAppIcon size={20} />
               </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Alagoas Medical"
-                className="block text-white/55 transition-colors hover:text-white"
+                className="-m-1 block p-1 text-white/55 transition-colors hover:text-white"
               >
                 <InstagramIcon />
               </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook da Alagoas Medical"
-                className="block text-white/55 transition-colors hover:text-white"
+                className="-m-1 block p-1 text-white/55 transition-colors hover:text-white"
               >
                 <FacebookIcon />
               </a>

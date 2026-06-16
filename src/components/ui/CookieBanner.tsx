@@ -9,7 +9,7 @@ export default function CookieBanner({
 }) {
   return (
     <div
-      role="dialog"
+      role="region"
       aria-label="Aviso de cookies"
       className="fixed inset-x-0 bottom-0 z-40 flex flex-col items-start justify-between gap-4 border-t border-white/10 bg-brand-blue-footer px-6 py-4 sm:flex-row sm:items-center"
     >

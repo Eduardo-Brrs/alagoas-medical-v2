@@ -76,6 +76,9 @@
  * ---------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
+  /* Compensa a navbar fixa: âncoras e foco de teclado não param sob o header
+   * (WCAG 2.2 — 2.4.11 Foco não obscurecido). */
+  scroll-padding-top: 5rem;
 }
 
 body {
