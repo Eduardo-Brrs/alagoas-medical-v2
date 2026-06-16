@@ -71,29 +71,37 @@ export type Produto = {
 /**
  * Produtos em destaque — seção em grade, intercambiável.
  * Para adicionar/trocar produtos no futuro, basta editar este array.
- * Hoje só o Flaminal é real; os demais são placeholders "Em breve".
+ * Flaminal, Solução PHMB+EDTA e Creme Barreira são reais. A copy do Flaminal veio
+ * do cliente; as descrições da Curatec ainda são provisórias (confirmar com o
+ * texto oficial do fabricante).
  */
 export const PRODUTOS: Produto[] = [
   {
     nome: "Flaminal",
     marca: "Flen Health",
     logoMarca: "/images/flenhealth-logo.png",
-    badge: "Em destaque",
-    descricao: "PLACEHOLDER — aguardando descrição do cliente.",
+    descricao:
+      "Alginogel cicatrizante para feridas agudas e crônicas. Bisnaga de 50 g.",
     imagem: "/images/flaminal-produto.png",
     linkWhatsapp: LINKS.whatsappVendas,
   },
   {
-    nome: "Em breve",
-    descricao: "Novo produto em destaque — em breve.",
+    nome: "Solução com PHMB + EDTA",
+    marca: "Curatec",
+    logoMarca: "/images/curatec-logo.jpg",
+    descricao:
+      "Solução para limpeza e irrigação de feridas. Frasco de 350 ml.",
+    imagem: "/images/curatec-solucao-phmb-edta-350ml.webp",
     linkWhatsapp: LINKS.whatsappVendas,
-    placeholder: true,
   },
   {
-    nome: "Em breve",
-    descricao: "Novo produto em destaque — em breve.",
+    nome: "Creme Barreira",
+    marca: "Curatec",
+    logoMarca: "/images/curatec-logo.jpg",
+    descricao:
+      "Creme barreira para proteção da pele ao redor da ferida. Disponível em 60 g e 100 g (foto: 100 g).",
+    imagem: "/images/curatec-creme-barreira-100g.webp",
     linkWhatsapp: LINKS.whatsappVendas,
-    placeholder: true,
   },
 ];
 
