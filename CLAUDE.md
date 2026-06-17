@@ -15,11 +15,13 @@ Site completo de ponta a ponta (todas as seções buildando com `output: export`
 Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo").
 
 **Próximo passo combinado:** **deploy na Vercel** + migração de domínio (ver "Deploy
-e domínio" abaixo). O único pendente de código é colar o `NEXT_PUBLIC_GA_ID` real
-quando o cliente criar a propriedade GA4.
+e domínio" abaixo). Bloco 6 inteiro fechado, inclusive o GA (ID já recebido).
 
 ### Google Analytics + consentimento — feito (2026-06-16)
-GA4 carregado **só após "Aceitar"** no banner (LGPD). Código 100% pronto; só falta o ID.
+GA4 carregado **só após "Aceitar"** no banner (LGPD). **ID recebido: `G-RFPJT3PMKR`.**
+> ⚠️ O `.env.local` é gitignored (não sincroniza). **No outro PC**, recrie um
+> `.env.local` com `NEXT_PUBLIC_GA_ID=G-RFPJT3PMKR` (ou copie do `.env.example`).
+> **Na Vercel**, defina essa mesma var nas Environment Variables antes do deploy.
 - `src/lib/gtag.ts`: lê `NEXT_PUBLIC_GA_ID` (embutido no build). Sem ID = no-op total.
   `loadGoogleAnalytics()` injeta o gtag.js de forma idempotente.
 - `FloatingWidgets.tsx`: chama `loadGoogleAnalytics()` no "Aceitar" e no mount se o
