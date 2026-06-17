@@ -8,14 +8,59 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ---
 
-## ⏱️ Estado atual de execução (atualizado em 2026-06-16)
+## ⏱️ Estado atual de execução (atualizado em 2026-06-17)
 
-**Bloco 6 — SEO ✅ e GA+consentimento ✅ (código pronto). Falta deploy.**
+**SITE NO AR. Deploy na Vercel ✅ + domínio apontado ✅ + DNS migrado pro Cloudflare ✅.**
 Site completo de ponta a ponta (todas as seções buildando com `output: export`).
 Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo").
 
-**Próximo passo combinado:** **deploy na Vercel** + migração de domínio (ver "Deploy
-e domínio" abaixo). Bloco 6 inteiro fechado, inclusive o GA (ID já recebido).
+**Único passo pendente:** cancelar SÓ a hospedagem UOL — esperando o e-mail "Active"
+do Cloudflare + 2 testes (site abre / e-mail envia+recebe) antes de cancelar. Detalhes
+na seção "Deploy, domínio e migração DNS — FEITO" logo abaixo.
+
+### Deploy, domínio e migração DNS — FEITO (2026-06-17)
+Tudo em produção. Sequência executada e estado atual:
+- **Vercel:** projeto importado do GitHub (`Eduardo-Brrs/alagoas-medical-v2`), publica a
+  cada push. **Env var `NEXT_PUBLIC_GA_ID=G-RFPJT3PMKR`** setada (Production + Preview).
+  Deployment Protection **desligada** (site público). GA confirmado disparando o
+  `gtag/js?id=G-RFPJT3PMKR` só após "Aceitar" (LGPD ok).
+- **Domínio `alagoasmedical.com.br`:** registrado/gerenciado na **UOL**. Aponta pra
+  Vercel via: **A `@` → `216.198.79.1`** e **CNAME `www` → `23af2eed30216e85.vercel-dns-017.com`**
+  (valores que a Vercel forneceu — novos padrões, diferentes do `76.76.21.21` antigo).
+  HTTPS/SSL automático da Vercel ativo.
+- **DNS migrado da UOL pro Cloudflare (grátis):** o DNS estava amarrado à HOSPEDAGEM da
+  UOL (nameservers `ns1/ns2.cpuh2.hospedagemuolhost.com.br`) — cancelar a hospedagem
+  derrubaria site E e-mail. Solução: levar o DNS pro Cloudflare ANTES de cancelar.
+  Nameservers trocados na UOL para **`ashton.ns.cloudflare.com` + `lara.ns.cloudflare.com`**.
+  Em propagação (`.com.br` pode levar até ~24h). Em 2026-06-17, 1.1.1.1 já via os NS
+  novos; 8.8.8.8 ainda via os antigos da UOL (ambos resolvem o A pra Vercel, então o
+  site funciona durante a transição). **Aguardando e-mail "Active" do Cloudflare.**
+- **Zona DNS no Cloudflare — 5 registros (limpos do lixo da hospedagem antiga):**
+  ```
+  A      @    216.198.79.1                              DNS only  (NÃO proxied!)
+  CNAME  www  23af2eed30216e85.vercel-dns-017.com       DNS only  (NÃO proxied!)
+  MX     @    SMTP.GOOGLE.COM  (prio 1)                 DNS only
+  TXT    @    "v=spf1 include:_spf.google.com ~all"     DNS only
+  TXT    @    "google-site-verification=I4cWP4yy72BYSb8lbit1aEVDvtGJgfsuMKoFzIq7mMk"
+  ```
+  - ⚠️ **A e www TÊM que ficar "DNS only" (nuvem CINZA), nunca "Proxied" (laranja)** —
+    o proxy do Cloudflare briga com o SSL da Vercel (loop/erro de cert).
+  - ⚠️ **SPF foi CORRIGIDO:** o importado da UOL era `include:spf.whservidor.com ?all`
+    (da hospedagem velha, quebraria ao cancelar). Trocado pro do Google Workspace.
+  - **E-mail = Google Workspace** (MX = `SMTP.GOOGLE.COM`). Lixo do cPanel/uhserver
+    (CNAMEs imap/pop/smtp/webmail, SRVs, `_acme-challenge`, `_cpanel-dcv-test-record`)
+    foi DELETADO — morria com a hospedagem mesmo.
+  - **Pendência opcional de e-mail:** não há **DKIM do Google** (`google._domainkey`)
+    configurado. Ativar no Admin do Google Workspace melhora entrega (não urgente).
+- **Checklist antes de cancelar a hospedagem UOL:** (1) Cloudflare "Active"; (2) site
+  abre com HTTPS; (3) e-mail `@alagoasmedical.com.br` envia E recebe. Só então cancelar
+  **APENAS o plano de hospedagem**, mantendo o registro do domínio.
+
+### Portfólio (2026-06-17)
+README reescrito como overview bilíngue (inglês + PT embaixo, formato das repos do
+Eduardo), com narrativa de evolução v1→v2. `mockup-referencia.html` removido do repo
+(commit `1078ed5`). Repo vai ser tornado **público** pra portfólio; `CLAUDE.md` fica
+no repo (decisão do Eduardo).
 
 ### Google Analytics + consentimento — feito (2026-06-16)
 GA4 carregado **só após "Aceitar"** no banner (LGPD). **ID recebido: `G-RFPJT3PMKR`.**
