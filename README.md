@@ -22,8 +22,8 @@ touching the components.
 |--------|-------------|------------|
 | Stack | Bootstrap + jQuery template | Next.js 16 · React 19 · Tailwind v4 |
 | Identity | Generic NGO template | Custom brand design system |
-| Accessibility | None | WCAG 2.2 AA (Lighthouse a11y **100**) |
-| Performance | Heavy, render-blocking | Static export on CDN (Lighthouse **98**) |
+| Accessibility | None | WCAG 2.2 AA (Lighthouse a11y **96**) |
+| Performance | Heavy, render-blocking | Static export on CDN (Lighthouse **100**) |
 | SEO | Minimal | sitemap · robots · Open Graph · structured metadata |
 | Maintainability | Hardcoded everywhere | Data-driven, single source of truth |
 
@@ -38,7 +38,7 @@ touching the components.
   semantic HTML, `prefers-reduced-motion`, validated contrast, and a brand palette
   recalibrated to pass AA while keeping the identity intact.
 - **Performance** — static export served from a CDN. Lighthouse (desktop):
-  **Performance 98 · Accessibility 100 · Best Practices 100 · SEO 100**.
+  **Performance 100 · Accessibility 96 · Best Practices 100 · SEO 100**.
 - **Dark mode** — via `next-themes`, with semantic color tokens that swap per theme.
 - **Full SEO** — `sitemap.xml`, `robots.txt` and an Open Graph image generated at build time.
 - **LGPD compliant** — Google Analytics loads **only after consent** in the cookie banner.
@@ -152,8 +152,8 @@ ou evoluir para uma loja no futuro sem tocar nos componentes.
 |--------|-------------|------------|
 | Stack | Template Bootstrap + jQuery | Next.js 16 · React 19 · Tailwind v4 |
 | Identidade | Template genérico de ONG | Design system próprio da marca |
-| Acessibilidade | Nenhuma | WCAG 2.2 AA (Lighthouse a11y **100**) |
-| Performance | Pesado, bloqueante | Export estático em CDN (Lighthouse **98**) |
+| Acessibilidade | Nenhuma | WCAG 2.2 AA (Lighthouse a11y **96**) |
+| Performance | Pesado, bloqueante | Export estático em CDN (Lighthouse **100**) |
 | SEO | Mínimo | sitemap · robots · Open Graph · metadata |
 | Manutenção | Tudo hardcoded | Orientado a dados, fonte única de verdade |
 
@@ -168,7 +168,7 @@ ou evoluir para uma loja no futuro sem tocar nos componentes.
   semântica HTML, `prefers-reduced-motion`, contraste validado e paleta de marca
   recalibrada para passar AA mantendo a identidade.
 - **Performance** — export estático servido por CDN. Lighthouse (desktop):
-  **Performance 98 · Acessibilidade 100 · Boas Práticas 100 · SEO 100**.
+  **Performance 100 · Acessibilidade 96 · Boas Práticas 100 · SEO 100**.
 - **Dark mode** — via `next-themes`, com tokens de cor semânticos que trocam por tema.
 - **SEO completo** — `sitemap.xml`, `robots.txt` e Open Graph image gerados no build.
 - **LGPD** — Google Analytics carregado **somente após consentimento** no banner de cookies.
