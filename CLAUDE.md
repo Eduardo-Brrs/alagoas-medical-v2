@@ -8,17 +8,20 @@ Leia este arquivo inteiro antes de qualquer ação.
 
 ---
 
-## ⏱️ Estado atual de execução (atualizado em 2026-06-17)
+## ⏱️ Estado atual de execução (atualizado em 2026-06-18)
 
-**SITE NO AR. Deploy na Vercel ✅ + domínio apontado ✅ + DNS migrado pro Cloudflare ✅.**
+**SITE NO AR e MIGRAÇÃO 100% ENCERRADA. Deploy na Vercel ✅ + domínio apontado ✅ +
+DNS migrado pro Cloudflare ✅ + hospedagem UOL CANCELADA ✅.**
 Site completo de ponta a ponta (todas as seções buildando com `output: export`).
 Os 3 cards de Produtos agora são produtos reais (ver "Decisões de conteúdo").
 
-**Único passo pendente:** cancelar SÓ a hospedagem UOL — esperando o e-mail "Active"
-do Cloudflare + 2 testes (site abre / e-mail envia+recebe) antes de cancelar. Detalhes
+**Hospedagem UOL cancelada em 2026-06-18** (mantido só o registro do domínio). Antes de
+cancelar, o checklist foi todo validado: Cloudflare "Active" (e-mail recebido), DNS
+propagado nos dois resolvers (1.1.1.1 + 8.8.8.8 já viam os NS do Cloudflare), site no
+ar com HTTPS, e e-mail `@alagoasmedical.com.br` testado enviando E recebendo. Detalhes
 na seção "Deploy, domínio e migração DNS — FEITO" logo abaixo.
 
-### Deploy, domínio e migração DNS — FEITO (2026-06-17)
+### Deploy, domínio e migração DNS — FEITO (2026-06-17 → encerrada 2026-06-18)
 Tudo em produção. Sequência executada e estado atual:
 - **Vercel:** projeto importado do GitHub (`Eduardo-Brrs/alagoas-medical-v2`), publica a
   cada push. **Env var `NEXT_PUBLIC_GA_ID=G-RFPJT3PMKR`** setada (Production + Preview).
@@ -32,9 +35,10 @@ Tudo em produção. Sequência executada e estado atual:
   UOL (nameservers `ns1/ns2.cpuh2.hospedagemuolhost.com.br`) — cancelar a hospedagem
   derrubaria site E e-mail. Solução: levar o DNS pro Cloudflare ANTES de cancelar.
   Nameservers trocados na UOL para **`ashton.ns.cloudflare.com` + `lara.ns.cloudflare.com`**.
-  Em propagação (`.com.br` pode levar até ~24h). Em 2026-06-17, 1.1.1.1 já via os NS
-  novos; 8.8.8.8 ainda via os antigos da UOL (ambos resolvem o A pra Vercel, então o
-  site funciona durante a transição). **Aguardando e-mail "Active" do Cloudflare.**
+  **Propagação concluída (2026-06-18):** 1.1.1.1 E 8.8.8.8 já veem os NS do Cloudflare
+  (em 2026-06-17 o 8.8.8.8 ainda via os antigos da UOL). Cloudflare "Active" confirmado
+  por e-mail. Todos os registros validados via `Resolve-DnsName` (A/CNAME/MX/SPF/TXT
+  batendo) e HTTPS no ar (apex faz 308 → www, www 200 OK).
 - **Zona DNS no Cloudflare — 5 registros (limpos do lixo da hospedagem antiga):**
   ```
   A      @    216.198.79.1                              DNS only  (NÃO proxied!)
@@ -52,9 +56,11 @@ Tudo em produção. Sequência executada e estado atual:
     foi DELETADO — morria com a hospedagem mesmo.
   - **Pendência opcional de e-mail:** não há **DKIM do Google** (`google._domainkey`)
     configurado. Ativar no Admin do Google Workspace melhora entrega (não urgente).
-- **Checklist antes de cancelar a hospedagem UOL:** (1) Cloudflare "Active"; (2) site
-  abre com HTTPS; (3) e-mail `@alagoasmedical.com.br` envia E recebe. Só então cancelar
-  **APENAS o plano de hospedagem**, mantendo o registro do domínio.
+- **Hospedagem UOL CANCELADA em 2026-06-18 ✅.** O checklist foi todo validado antes:
+  (1) Cloudflare "Active"; (2) site abre com HTTPS; (3) e-mail `@alagoasmedical.com.br`
+  envia E recebe (testado manualmente pelo Eduardo). Cancelado **APENAS o plano de
+  hospedagem** — o **registro do domínio `alagoasmedical.com.br` foi MANTIDO**. Site e
+  e-mail seguem no ar (Vercel + Google Workspace, DNS no Cloudflare).
 
 ### Portfólio (2026-06-17)
 README reescrito como overview bilíngue (inglês + PT embaixo, formato das repos do
