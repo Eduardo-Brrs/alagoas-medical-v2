@@ -32,6 +32,21 @@ export const LINKS = {
   flenHealth: "https://www.flenhealth.com/",
 } as const;
 
+/**
+ * Promoção por tempo limitado — pop-up exibido uma vez por visitante.
+ * Para DESLIGAR quando a promoção acabar: troque `ativa` para `false`
+ * (é só esta linha — o pop-up some do site inteiro). Para reexibir uma nova
+ * campanha a quem já fechou a anterior, troque o `id`.
+ * Imagem em 2:3 (1024×1536, formato story/post).
+ */
+export const PROMO = {
+  ativa: true,
+  id: "creme-barreira-2026-06",
+  imagem: "/images/creme-barreira-promo.jpeg",
+  alt: "Promoção: Creme Barreira da Curatec por R$ 37,99 — estoque limitado.",
+  linkWhatsapp: LINKS.whatsappVendas,
+} as const;
+
 export type Parceiro = {
   nome: string;
   descricao: string;

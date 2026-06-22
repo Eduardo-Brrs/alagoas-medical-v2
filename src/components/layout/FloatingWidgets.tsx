@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import WhatsAppFloat from "@/components/sections/WhatsAppFloat";
 import CookieBanner from "@/components/ui/CookieBanner";
+import PromoPopup from "@/components/ui/PromoPopup";
 import { useHydrated } from "@/lib/useHydrated";
 import { loadGoogleAnalytics } from "@/lib/gtag";
+import { PROMO } from "@/lib/constants";
 
 /**
  * Coordena os elementos fixos do canto inferior.
@@ -40,6 +42,7 @@ export default function FloatingWidgets() {
   return (
     <>
       {!bannerOpen && <WhatsAppFloat />}
+      {!bannerOpen && PROMO.ativa && <PromoPopup />}
       {bannerOpen && (
         <CookieBanner
           onAccept={() => resolve("accepted")}
